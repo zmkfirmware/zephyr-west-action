@@ -1,5 +1,8 @@
 name: "Zephyr West"
 description: 'Action incorporating Zephyr dependencies and West build tool'
+branding:
+  icon: 'play'
+  color: 'purple'
 inputs:
   command:  # id of input
     description: 'Which west command to execute'
