@@ -54,5 +54,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: docker.pkg.github.com/${{ github.repository }}/zephyr-west-action
+          repository: ${{ github.repository }}/zephyr-west-action
           tag_with_ref: true
