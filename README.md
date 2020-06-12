@@ -80,3 +80,8 @@ jobs:
           command: 'build'
           command-args: '-s app'
 ```
+
+# Docker Container Version
+
+In order to avoid rebuilding the GitHub Action each time your workflow runs, which currently
+takes a significant amount of time, try using the prebuild Docker Image at TODO instead.
