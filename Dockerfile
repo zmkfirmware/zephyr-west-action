@@ -47,7 +47,7 @@ RUN wget -q https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}
 	rm -f ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh
 
 ARG ZSDK_TOOL=sdk
-ARG ZSDK_VERSION=0.11.3
+ARG ZSDK_VERSION=0.11.2
 RUN wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-setup.run" && \
 	sh "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-setup.run" --quiet -- -d /opt/toolchains/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION} && \
 	rm "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-setup.run"
