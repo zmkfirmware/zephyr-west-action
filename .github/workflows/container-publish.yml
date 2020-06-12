@@ -12,9 +12,6 @@ on:
   # Run tests for any PRs.
   pull_request:
 
-env:
-  IMAGE_NAME: zephyr-west-action
-
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
@@ -49,7 +46,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          repository: zmkfirmware/$IMAGE_NAME
+          repository: zmkfirmware/zephyr-west-action
           tag_with_ref: true
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
@@ -57,5 +54,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          repository: docker.pkg.github.com/${{ github.repository }}/zephyr-west-action
           tag_with_ref: true
