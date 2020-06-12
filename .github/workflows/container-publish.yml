@@ -27,7 +27,7 @@ jobs:
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
           else
-            docker build . --file Dockerfile
+            docker build --build-arg ZSDK_TOOL=toolchain-arm . --file Dockerfile
           fi
 
   # Push image to GitHub Packages and Docker Hub.
@@ -41,14 +41,31 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Push to Docker Hub
+      - name: Push ARM only to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          build_args: ZSDK_TOOL=toolchain-arm
+          repository: zmkfirmware/zephyr-west-action-arm
+          tag_with_ref: true
+      - name: Push ARM only to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          build_args: ZSDK_TOOL=toolchain-arm
+          repository: ${{ github.repository }}/zephyr-west-action-arm
+          tag_with_ref: true
+      - name: Push full SDK to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           repository: zmkfirmware/zephyr-west-action
           tag_with_ref: true
-      - name: Push to GitHub Packages
+      - name: Push full SDK to GitHub Packages
         uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
