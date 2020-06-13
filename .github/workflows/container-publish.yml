@@ -6,8 +6,9 @@ on:
     branches:
       - master
 
-  release:
-    types: [released]
+    # Publish tags as tagged images.
+    tags:
+      - v*
 
   # Run tests for any PRs.
   pull_request:
@@ -37,6 +38,7 @@ jobs:
     needs: test
 
     runs-on: ubuntu-latest
+    if: github.event_name == "push"
 
     steps:
       - uses: actions/checkout@v2
