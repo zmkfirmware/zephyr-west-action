@@ -2,9 +2,9 @@ name: Docker Image
 
 on:
   push:
-    # Publish `master` as Docker `latest` image.
+    # Publish `main` as Docker `latest` image.
     branches:
-      - master
+      - main
 
     # Publish tags as tagged images.
     tags:
