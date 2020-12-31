@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Note, ZMK has deprecated using this, in favor of https://github.com/zmkfirmware/zmk-docker/.
+
 # Zephyr West Github Action
 
 A GitHub Action to allow performing actions using the [west](https://docs.zephyrproject.org/latest/guides/west/index.html) build tool.
